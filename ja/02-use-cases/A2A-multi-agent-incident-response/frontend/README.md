@@ -1,0 +1,35 @@
+# Amazon Bedrock AgentCore Runtime 上の A2A フロントエンド
+
+## 概要
+
+これはホスト Google ADK エージェントと対話するためのチャットインターフェースを提供するシングルページアプリケーションです。このアプリは AWS Cognito 経由の OAuth 認証を処理し、エージェントからのレスポンスをリアルタイムでストリーミングし、ツール呼び出しとその結果を含む完全なエージェントワークフローを表示します。
+
+## 始め方
+
+### 前提条件
+
+- Node.js 18 以上、[ドキュメント](https://nodejs.org/en/download) を参照してインストールしてください。
+
+### インストール
+
+```bash
+cd frontend
+npm install
+```
+
+### 設定
+
+このディレクトリに `.env` ファイルを作成します：
+
+```bash
+chmod +x ./setup-env.sh
+./setup-env.sh
+```
+
+### ローカルでの実行
+
+```bash
+npm run dev
+```
+
+アプリは `http://localhost:5173` で利用可能になります

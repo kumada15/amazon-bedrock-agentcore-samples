@@ -3,7 +3,10 @@
 - aarora79
 - akshseh
 - anajmi
+- andy-dufour
+- amit-lulla
 - architec
+- arunskum
 - aristsakpinis93
 - aurbac
 - bergjaak
@@ -14,6 +17,7 @@
 - dhawalkp
 - didhd
 - EashanKaushik
+- ezzara
 - Fabian Rami
 - Grace Lang
 - Hari Tripathi
@@ -72,9 +76,44 @@
 - Sparsh Wadhwa (SparshWadhwa)
 - Lana Zhang
 - Bharathi Srinivasan
+- Trevor Schiavone
 - Antonio Rodriguez (rodzanto)
 - otamaryx
 - kevlw
 - iprivit
 - vargas-dann-0896
 - razkenari
+- Kostas Tzouvanas
+- Sunita Koppar (skoppar)
+- Gi Kim (giryoong)
+- richatt
+- Hideki Tane
+- xinaizha
+- Traci Lim (longwind48)
+- Jerad Engebreth (jcengebreth)
+- Roberto Catalano
+- Nadhya Polanco
+- afarntrog
+- Sid Ahmed boudboub (sierrabravo98)
+- Gan Luan
+- Will Ensor
+- Osman Santos
+- David Kaleko
+- Sebastian Mathalikunnel (smathalikunnel)
+- Diego Brasil
+- Dumitru Pascu (dumip)
+- Rajesh Sitaraman (rjesh-git)
+- Diego Brasil
+- Dumitru Pascu (dumip)
+- Eitan Sela
+- Swara Gandhi
+- Daniel Suarez Souto (dsuarezsoutoaws)
+- Shubham Gupta (guptashs)
+- Vibhu Pareek (vibhup)
+- Richa Gupta (richagpt)
+- Chandra Dhandapani
+- Anant Murarka (anantmu)
+- Cristiano Scandura (scandura)
+- palbiren
+- Gui Ruggiero (guiruggiero)
+- Visakh Madathil (vmmadathil)

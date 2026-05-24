@@ -149,7 +149,8 @@ Resources:
     Type: AWS::ECR::Repository
     DeletionPolicy: Delete
     Properties:
-      ImageScanningConfiguration:
+            ImageTagMutability: IMMUTABLE
+ImageScanningConfiguration:
         ScanOnPush: true
       LifecyclePolicy:
         LifecyclePolicyText: |
@@ -813,6 +814,7 @@ Resources:
                   - bedrock:InvokeModelWithResponseStream
                 Resource:
                   - 'arn:aws:bedrock:*::foundation-model/*'
+                  - 'arn:aws:bedrock:*:*:inference-profile/*'
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-Memory-Execution-Role'
@@ -914,7 +916,8 @@ Resources:
   AgentRuntimeLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupClass: STANDARD
+            RetentionInDays: 30
+LogGroupClass: STANDARD
       LogGroupName: !Sub "/aws/vendedlogs/bedrock-agentcore/${AgentRuntime.AgentRuntimeId}"
 
   AgentRuntimeDeliverSourceApplicationLogs:

@@ -13,7 +13,9 @@ from cx_agent_backend.infrastructure.aws.parameter_store_reader import (
 )
 
 # Configure logging for local development
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -26,7 +28,7 @@ def _get_kb_retriever():
     logger.debug("Initializing Knowledge Base retriever")
 
     try:
-        kb_id = parameter_store_reader.get_parameter("/amazon/kb_id")
+        kb_id = parameter_store_reader.get_parameter("/amazon/kb_id", decrypt=True)
         if not kb_id:
             logger.error("Bedrock Knowledge Base ID not configured in parameter store")
             raise ValueError("Bedrock Knowledge Base ID not configured")
@@ -61,7 +63,7 @@ def retrieve_context(query: str) -> dict:
 
     try:
         retriever = _get_kb_retriever()
-        kb_id = parameter_store_reader.get_parameter("/amazon/kb_id")
+        kb_id = parameter_store_reader.get_parameter("/amazon/kb_id", decrypt=True)
         logger.debug("Knowledge Base retriever initialized successfully")
 
         retrieved_docs = retriever.invoke(input=query)
@@ -143,7 +145,7 @@ def create_support_ticket(
 
     try:
         # Get Zendesk credentials
-        zendesk_credentials = secret_reader.read_secret("zendesk_credentials-b0439fb2")
+        zendesk_credentials = secret_reader.read_secret("zendesk_credentials")
         subdomain = zendesk_credentials["zendesk_domain"]
         email = zendesk_credentials["zendesk_email"]
         api_token = zendesk_credentials["zendesk_api_token"]
@@ -231,14 +233,13 @@ def get_support_tickets(
 
     try:
         # Get Zendesk credentials
-        zendesk_credentials = secret_reader.read_secret("zendesk_credentials-b0439fb2")
+        zendesk_credentials = secret_reader.read_secret("zendesk_credentials")
         subdomain = zendesk_credentials["zendesk_domain"]
         email = zendesk_credentials["zendesk_email"]
         api_token = zendesk_credentials["zendesk_api_token"]
         logger.debug("Retrieved Zendesk credentials for domain")
     except Exception:
         logger.error("Failed to retrieve Zendesk credentials")
-
 
     # If credentials not configured, return mock response
     if not all([subdomain, email, api_token]):
@@ -295,7 +296,7 @@ def web_search(query: str) -> str:
     logger.info("Performing web search for query: %s...", query[:100])
 
     try:
-        tavily_secret = secret_reader.read_secret("tavily_key-b0439fb2")
+        tavily_secret = secret_reader.read_secret("tavily_key")
         tavily_api_key = json.loads(tavily_secret)["tavily_key"]
         logger.debug("Retrieved Tavily API credentials")
     except Exception:
@@ -337,7 +338,7 @@ def web_search(query: str) -> str:
 # Available tools
 tools = [
     # web_search,  # Commented out - using gateway integration instead
-    #retrieve_context,
-    #create_support_ticket,
-    #get_support_tickets,
+    retrieve_context,
+    create_support_ticket,
+    get_support_tickets,
 ]
